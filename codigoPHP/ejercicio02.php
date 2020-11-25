@@ -1,4 +1,8 @@
 <?php
+    /**
+        *@author: Cristina Núñez
+        *@since: 25/11/2020
+    */
 if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {
     header('WWW-Authenticate: Basic Realm="Contenido restringido"');
     header('HTTP/1.0 401 Unauthorized');
@@ -18,17 +22,20 @@ if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {
             $consulta->execute($parametros);//Pasamos los parámetros a la consulta
             $resultado = $consulta->fetchObject();
             if($consulta->rowCount()>0){
-                $CodigoUsuario = $resultado->CodUsuario;
-                $Password = $resultado->Password;
-                
                 $passwordEncriptado=hash("sha256", ($_SERVER['PHP_AUTH_USER'].$_SERVER['PHP_AUTH_PW']));
-                if($CodigoUsuario==$_SERVER['PHP_AUTH_USER'] && $Password==$passwordEncriptado){
-                    header('Location: programa.php'); 
+                if($resultado->CodUsuario==$_SERVER['PHP_AUTH_USER'] && $resultado->Password==$passwordEncriptado){
+                    session_start();
+                    $_SESSION['usuario']=$_SERVER['PHP_AUTH_USER'];
+                    $_SESSION['password']=$_SERVER['PHP_AUTH_PW'];
+                    header('Location: programaEjercicio2.php'); 
                     exit;
                 }
             }else{
-                echo "<h3>Usuario incorrecto</h3>";
+                header('WWW-Authenticate: Basic Realm="Contenido restringido"');
+                header('HTTP/1.0 401 Unauthorized');
+                echo "Usuario incorrecto";
                 echo '<a href="../indexProyectoTema5.php"><button type="button" name="volver" value="volver" class="volver">VOLVER</button></a>';
+                exit;
             }
         }catch(PDOException $excepcion){
             $errorExcepcion = $excepcion->getCode();//Almacenamos el código del error de la excepción en la variable $errorExcepcion

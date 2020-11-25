@@ -95,7 +95,7 @@
                 <tr>
                     <td class="enunciado">02.Desarrollo de un control de acceso con identificación del usuario basado en la función header() yen el uso de una tabla “Usuario” de la base de datos. (PDO).</td>
                     <td><a href="codigoPHP/ejercicio02.php"><img src="webroot/media/run.png" alt="ejecutar código PDO" width="30px"></a></td>
-                    <td><a href="#"><img src="webroot/media/code.png" alt="ver código PDO" width="40px"></a></td>
+                    <td><a href="mostrarcodigo/muestraEjercicio02.php"><img src="webroot/media/code.png" alt="ver código PDO" width="40px"></a></td>
                 </tr>
             </table>
         </div>

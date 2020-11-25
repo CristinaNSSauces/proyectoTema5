@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=News+Cycle&display=swap');
+.logo{
+    font-size: 25px;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    font-family: 'Bebas Neue', cursive;
+    background-color: #a5f77a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+}
+
+.activo{
+    color: whitesmoke;
+    -webkit-text-stroke: 0.7px black;
+}
+
+a:hover{
+    color: whitesmoke;
+    -webkit-text-stroke: 0.7px black;
+}
+
+li,a{
+    font-weight: 500;
+    font-size: 25px;
+    color: black;
+    text-decoration: none;
+}
+.contenido{
+    text-align: center;
+}
+
+.contenido a{
+    color:black;
+}
+
+.contenido a:hover{
+    color:gray;
+}
+
+.enlaces{
+    list-style: none;
+}
+
+.enlaces li{
+    display: inline-block;
+    padding: 10px;
+}
+.practica{
+    text-align: center;
+    width: 380px;
+    height: 360px;
+    float: left;
+    margin-left: 80px;
+    margin-top: 50px;
+}
+.contenido{
+    height: auto;
+	
+}
+
+.contenido ul{
+    list-style: none;
+}
+
+footer{
+    font-family: 'Bebas Neue', cursive;
+    width: 100%;
+    text-align: center;
+    float: left;
+    background-color: rgb(177, 177, 177);
+}
+
+figure{
+    float: left;
+}
+
+main{
+    font-family: 'News Cycle', sans-serif;
+    min-height:calc(100vh - 114px);
+}
+
+table{
+    width: 90%;
+    font-size: 20px;
+    text-align: center;
+    padding-left: 7%;
+    vertical-align: middle;
+}
+
+.enunciado{
+    text-align: left;
+}
+
+footer{
+    display: inline-block;
+}

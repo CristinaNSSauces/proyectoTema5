@@ -1,3 +1,16 @@
+<?php
+    /**
+        *@author: Cristina Núñez
+        *@since: 24/11/2020
+    */ 
+    session_start();
+    if(isset($_REQUEST['salir'])){
+        session_destroy();
+        unset($_COOKIE['PHPSESSID']);
+        header('Location: ../indexProyectoTema5.php');
+        exit;
+    }
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -120,7 +133,11 @@
             }
             ?>
         <tr>
-            <td colspan="2" style="width: 100%;height: 100%;background-color: #efcb84; text-align: center;"><a style="text-decoration: none; background-color: #efcb84" href="../indexProyectoTema5.php">SALIR</a></td>
+            <td colspan="2" style="width: 100%;height: 100%;background-color: #efcb84; text-align: center;">
+                <form  name="formulario" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+                    <button style="width: 100%; height: 100%;" type="submit" name='salir' value="salir" class="volver">SALIR</button>
+                </form>
+            </td>
         </tr>
     </table> 
         <?php
