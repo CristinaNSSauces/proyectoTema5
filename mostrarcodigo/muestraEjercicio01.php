@@ -5,8 +5,8 @@
     echo "<h3>Código programaEjercicio1.php</h3>";
     highlight_file('../codigoPHP/programaEjercicio1.php');
     
-    echo "<h3>Código detalles.php</h3>";
-    highlight_file('../codigoPHP/detalles.php');
+    echo "<h3>Código detallesEjercicio1.php</h3>";
+    highlight_file('../codigoPHP/detallesEjercicio1.php');
 ?>
 
 
