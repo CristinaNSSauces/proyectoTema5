@@ -1,17 +1,20 @@
 <?php
     /**
         *@author: Cristina Núñez
-        *@since: 25/11/2020
+        *@since: 26/11/2020
     */
     session_start();
     if(isset($_REQUEST['detalles'])){
-        header('Location: detalles.php');
+        header('Location: detallesEjercicio2.php');
         exit;
     }
     if(isset($_REQUEST['salir'])){
         session_destroy();
-        unset($_COOKIE['PHPSESSID']);
         header('Location: ../indexProyectoTema5.php');
+        exit;
+    }
+    if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {
+        header('Location: ejercicio02.php');
         exit;
     }
 ?>

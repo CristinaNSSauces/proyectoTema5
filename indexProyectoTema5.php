@@ -28,42 +28,14 @@
             <table>
                 
                 <tr>
-                    <th>Script</th>
-                    <th>Descargar</th>
+                    <th>Scripts</th>
                     <th>Mostrar</th>
                 </tr>
                 <tr>
-                    <td>Script CreaDAW215DBProyectoTema5</td>
-                    <td><a href="scriptDB/CreaDAW215DBProyectoTema5.sql"><img src="webroot/media/descargar.png" alt="descargar script" width="40px"></a></td>
-                    <td><a href="mostrarcodigo/muestraScriptCreaDAW215DBProyectoTema5.php"><img src="webroot/media/code.png" alt="ver script" width="40px"></a></td>
+                    <td>Scripts DAW215DBProyectoTema5</td>
+                    <td><a href="mostrarcodigo/muestraScriptsDAW215DBProyectoTema5.php"><img src="webroot/media/code.png" alt="ver script" width="40px"></a></td>
                 </tr>
-                <tr>
-                    <td>Script CargaInicialDAW215DBProyectoTema5</td>
-                    <td><a href="scriptDB/CargaInicialDAW215DBProyectoTema5.sql"><img src="webroot/media/descargar.png" alt="descargar script" width="40px"></a></td>
-                    <td><a href="mostrarcodigo/muestraScriptCargaInicialDAW215DBProyectoTema5.php"><img src="webroot/media/code.png" alt="ver script" width="40px"></a></td>
-                </tr>
-                <tr>
-                    <td>Script BorraDAW215DBDBProyectoTema5</td>
-                    <td><a href="scriptDB/BorraDAW215DBProyectoTema5.sql"><img src="webroot/media/descargar.png" alt="descargar script" width="40px"></a></td>
-                    <td><a href="mostrarcodigo/muestraScriptBorraDAW215DBProyectoTema5.php"><img src="webroot/media/code.png" alt="ver script" width="40px"></a></td>
-                </tr>
-                <!--
-                <tr>
-                    <td>Script CreaDAW215DBDepartamentos.php</td>
-                    <td><a href="scriptDB/crear.php"><img src="webroot/media/run.png" alt="ejecutar script" width="40px"></a></td>
-                    <td><a href="mostrarcodigo/muestraCrear1and1.php"><img src="webroot/media/code.png" alt="ver script" width="40px"></a></td>
-                </tr>
-                <tr>
-                    <td>Script CargaInicialDAW215DBDepartamentos.php</td>
-                    <td><a href="scriptDB/CargaInicial.php"><img src="webroot/media/run.png" alt="ejecutar script" width="40px"></a></td>
-                    <td><a href="mostrarcodigo/muestraCargaInicial1and1.php"><img src="webroot/media/code.png" alt="ver script" width="40px"></a></td>
-                </tr>
-                <tr>
-                    <td>Script BorrarDAW215DBDepartamentos.php</td>
-                    <td><a href="scriptDB/Borrar.php"><img src="webroot/media/run.png" alt="ejecutar script" width="40px"></a></td>
-                    <td><a href="mostrarcodigo/muestraBorrar1and1.php"><img src="webroot/media/code.png" alt="ver script" width="40px"></a></td>
-                </tr>
-                -->
+                
                 <tr>
                     <th>Archivos de configuración</th>
                     <th>Mostrar</th>
@@ -102,7 +74,13 @@
     </main>
     
     <footer> 
-        <address>Cristina Núñez Sebastián</address>
+        <table class="pie">
+            <tr> 
+                <td><a href="http://daw215.ieslossauces.es/" target="_blank"><img src="webroot/media/1&1.png" alt="1&1" width="45"></a></td>
+                <td style="font-size: 26px;"><a href="../index.html">Cristina Núñez Sebastián</a></td>
+                <td><a href="https://github.com/CristinaNSSauces" target="_blank"><img src="webroot/media/git.png" alt="git" width="45"></a></td>
+            </tr>
+        </table>
     </footer>
 </body>
 </html>

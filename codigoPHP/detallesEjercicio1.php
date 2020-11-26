@@ -1,21 +1,64 @@
+<?php
+    /**
+        *@author: Cristina Núñez
+        *@since: 26/11/2020
+    */ 
+    if(isset($_REQUEST['salir'])){
+        header('Location: ../indexProyectoTema5.php');
+        exit;
+    }
+    
+    if ($_SERVER['PHP_AUTH_USER'] != 'admin' || $_SERVER['PHP_AUTH_PW'] != 'paso') {
+        header('Location: ejercicio01.php');
+        exit;
+    }
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ejercicio 00</title>         
+        <title>Ejercicio 01</title>         
     </head>
     <body>
         <table style="margin:auto; ">
-        
+            
+        <tr>
+            <td colspan="2" style="font-weight: bold; text-align: center; background-color: #6dc4b3">$_COOKIE</td>
+        </tr>
+            <?php
+            foreach ($_COOKIE as $key => $value) {
+            ?>
+                <tr>
+                    <td style="background-color:#7be4cf;"><?php echo $key?></td>
+                    <td style="background-color:#d6d6d6;"><?php echo $value?></td>
+                </tr>
+            <?php
+            }
+            ?>
+        <tr>
+           
+        <tr>
+            <td colspan="2" style="font-weight: bold; text-align: center; background-color: #6dc4b3">$_SESSION</td>
+        </tr>
+            <?php
+            if(isset($_SESSION)){
+                foreach ($_SESSION as $key => $value) {
+                ?>
+                    <tr>
+                        <td style="background-color:#7be4cf;"><?php echo $key?></td>
+                        <td style="background-color:#d6d6d6;"><?php echo $value?></td>
+                    </tr>
+                <?php
+                }
+            }
+            
+            ?>
+            
         <tr>
             <td colspan="2" style="font-weight: bold; text-align: center; background-color: #6dc4b3">$_SERVER</td>
         </tr>
             <?php
-            /**
-                *@author: Cristina Núñez
-                *@since: 23/11/2020
-            */ 
             foreach ($_SERVER as $key => $value) {
             ?>
                 <tr>
@@ -25,6 +68,7 @@
             <?php
             }
             ?>
+        
         <tr>
             <td colspan="2" style="font-weight: bold; text-align: center; background-color: #6dc4b3">$_GET</td>
         </tr>
@@ -108,23 +152,12 @@
             <?php
             }
             ?>
-            
-        
-        <tr>
-            <td colspan="2" style="font-weight: bold; text-align: center; background-color: #6dc4b3">$_COOKIE</td>
-        </tr>
-            <?php
-            foreach ($_COOKIE as $key => $value) {
-            ?>
-                <tr>
-                    <td style="background-color:#7be4cf;"><?php echo $key?></td>
-                    <td style="background-color:#d6d6d6;"><?php echo $value?></td>
-                </tr>
-            <?php
-            }
-            ?>
-        <tr>
-            <td colspan="2" style="width: 100%;height: 100%;background-color: #efcb84; text-align: center;"><a style="text-decoration: none; background-color: #efcb84" href="../indexProyectoTema5.php">SALIR</a></td>
+                
+            <td colspan="2" style="width: 100%;height: 100%;background-color: #efcb84; text-align: center;">
+                <form  name="formulario" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+                    <button style="width: 100%; height: 100%;" type="submit" name='salir' value="salir" class="volver">SALIR</button>
+                </form>
+            </td>
         </tr>
     </table> 
         <?php

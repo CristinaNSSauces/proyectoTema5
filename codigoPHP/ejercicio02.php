@@ -1,14 +1,13 @@
 <?php
     /**
         *@author: Cristina Núñez
-        *@since: 25/11/2020
+        *@since: 26/11/2020
     */
 if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {
     header('WWW-Authenticate: Basic Realm="Contenido restringido"');
     header('HTTP/1.0 401 Unauthorized');
-    echo "Usuario incorrecto";
     exit;
-}else{
+}
     require_once '../core/201109libreriaValidacion.php';
     require_once "../config/confDBPDO.php";//Incluimos el archivo confDBPDO.php para poder acceder al valor de las constantes de los distintos valores de la conexión 
     try{//validamos que la CodUsuario sea correcta
@@ -26,7 +25,6 @@ if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {
                 if($resultado->CodUsuario==$_SERVER['PHP_AUTH_USER'] && $resultado->Password==$passwordEncriptado){
                     session_start();
                     $_SESSION['usuario']=$_SERVER['PHP_AUTH_USER'];
-                    $_SESSION['password']=$_SERVER['PHP_AUTH_PW'];
                     header('Location: programaEjercicio2.php'); 
                     exit;
                 }
@@ -46,5 +44,4 @@ if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {
         } finally {
            unset($miDB); //cerramos la conexion con la base de datos
         }
-}
 ?>
