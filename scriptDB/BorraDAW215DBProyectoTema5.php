@@ -11,8 +11,8 @@
                 $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//Configuramos las excepciones
                 
                 $sql = <<<EOD
-                        DROP TABLE Departamento;
-                        DROP TABLE Usuario;
+                        DROP TABLE T02_Departamento;
+                        DROP TABLE T01_Usuario;
 EOD;
                 
                 $miDB->exec($sql);

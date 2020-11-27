@@ -3,29 +3,29 @@
         *@author: Cristina Núñez
         *@since: 26/11/2020
     */
-if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {
+if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {//Si el usuario no ha rellenado el usuario y la contraseña
     header('WWW-Authenticate: Basic Realm="Contenido restringido"');
     header('HTTP/1.0 401 Unauthorized');
     exit;
 }
-    require_once '../core/201109libreriaValidacion.php';
     require_once "../config/confDBPDO.php";//Incluimos el archivo confDBPDO.php para poder acceder al valor de las constantes de los distintos valores de la conexión 
     try{//validamos que la CodUsuario sea correcta
             $miDB = new PDO(DNS,USER,PASSWORD);//Instanciamos un objeto PDO y establecemos la conexión
             $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//Configuramos las excepciones
 
-            $sql = "Select CodUsuario, Password from Usuario where CodUsuario=:CodUsuario";
+            $sql = "Select T01_CodUsuario, T01_Password from T01_Usuario where T01_CodUsuario=:CodUsuario";
             $consulta = $miDB->prepare($sql);//Preparamos la consulta
             $parametros = [":CodUsuario" => $_SERVER['PHP_AUTH_USER']];
 
             $consulta->execute($parametros);//Pasamos los parámetros a la consulta
-            $resultado = $consulta->fetchObject();
-            if($consulta->rowCount()>0){
-                $passwordEncriptado=hash("sha256", ($_SERVER['PHP_AUTH_USER'].$_SERVER['PHP_AUTH_PW']));
-                if($resultado->CodUsuario==$_SERVER['PHP_AUTH_USER'] && $resultado->Password==$passwordEncriptado){
-                    session_start();
-                    $_SESSION['usuario']=$_SERVER['PHP_AUTH_USER'];
-                    header('Location: programaEjercicio2.php'); 
+            
+            if($consulta->rowCount()>0){//Si la consulta nos devuelve algo
+                $resultado = $consulta->fetchObject();//Obtenemos el primer registro de la consulta y avanzamos el puntero al siguiente registro
+                $passwordEncriptado=hash("sha256", ($_SERVER['PHP_AUTH_USER'].$_SERVER['PHP_AUTH_PW']));//Almacenamos en $passwordEncriptado el valor resultante de la encriptacion del codigo de usuario junto a la contraseña
+                if($resultado->T01_CodUsuario==$_SERVER['PHP_AUTH_USER'] && $resultado->T01_Password==$passwordEncriptado){//Si se da esta condición el usuario y la contraseña son correctos
+                    session_start();//Iniciamos una sesión o si ya existía la reanudamos
+                    $_SESSION['usuario']=$_SERVER['PHP_AUTH_USER'];//Asignamos el valo de el codigo de usuario a la variable creada $_SESSION['usuario]
+                    header('Location: programaEjercicio2.php'); //Redirigimos al usuario al programa
                     exit;
                 }
             }else{

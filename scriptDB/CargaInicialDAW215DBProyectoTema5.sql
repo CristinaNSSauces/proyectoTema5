@@ -3,7 +3,7 @@
 USE DAW215DBProyectoTema5;
 
 -- Introduccion de datos dentro de la tabla creada
-INSERT INTO Departamento(CodDepartamento,DescDepartamento,FechaCreacionDepartamento, VolumenNegocio) VALUES
+INSERT INTO T02_Departamento(T02_CodDepartamento, T02_DescDepartamento, T02_FechaCreacionDepartamento, T02_VolumenNegocio) VALUES
     ('INF', 'Departamento de informatica',1606156754, 5),
     ('VEN', 'Departamento de ventas',1606156754, 8),
     ('CON', 'Departamento de contabilidad',1606156754, 9),
@@ -11,7 +11,7 @@ INSERT INTO Departamento(CodDepartamento,DescDepartamento,FechaCreacionDepartame
     ('MKT', 'Departamento de marketing',1606156754, 1);
 -- 1606156754 -> 23-nov-2020 ~19:39:14 --
 -- El tipo de usuario es "usuario" como predeterminado, despues añado un admin --
-INSERT INTO Usuario(CodUsuario, DescUsuario, Password) VALUES
+INSERT INTO T01_Usuario(T01_CodUsuario, T01_DescUsuario, T01_Password) VALUES
     ('nereaA','NereaA',SHA2('nereaApaso',256)),
     ('miguel','Miguel',SHA2('miguelpaso',256)),
     ('bea','Bea',SHA2('beapaso',256)),
@@ -33,4 +33,4 @@ INSERT INTO Usuario(CodUsuario, DescUsuario, Password) VALUES
     ('leticia','Leticia',SHA2('leticiapaso',256));
 
 -- Usuario con el rol admin --
-INSERT INTO Usuario(CodUsuario, DescUsuario, Password, Perfil) VALUES ('admin','admin',SHA2('adminpaso',256), 'administrador');
+INSERT INTO T01_Usuario(T01_CodUsuario, T01_DescUsuario, T01_Password, T01_Perfil) VALUES ('admin','admin',SHA2('adminpaso',256), 'administrador');

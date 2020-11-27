@@ -90,7 +90,7 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
 // Return null es correcto, si no muestra el mensaje de error
 // Si es un 1 es obligatorio, si es un 0 no lo es
     /**
-     * @author Christian Muñiz de la Huerga
+     * @author Javier Nieto y Cristina Núñez
      * @function comprobarEntero();
      * @param $integer Número entero a comprobar
      * @param $max Valor máximo del entero
@@ -126,7 +126,7 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
 // Return null es correcto, si no muestra el mensaje de error
 // Si es un 1 es obligatorio, si es un 0 no lo es
     /**
-     * @author Christian Muñiz de la Huerga
+     * @author Javier Nieto y Cristina Núñez
      * @function comprobarFloat();
      * @param $float Número entero a comprobar
      * @param $max Valor máximo del entero
