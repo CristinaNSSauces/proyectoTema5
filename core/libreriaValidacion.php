@@ -20,6 +20,7 @@
  * comprobarAlfanumerico y validarEmail. También he eliminado una función inservible "comprobarCódigo". Este cambio se basa en simplificar la cantidad de código ya que antes los * errores
  * @since version 1.5 mejorada la ortografía de los mensajes de error
  * se escribian cada vez que querías mostrarlos ahora ya los devuelve cada función a la que se ha llamado sin tener que escribir nada.
+ * @since 30/11/2020
  * 
  */
 class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN VALIDAR FECHA, ELIMINACION DE VALIDAR CHECKBOX Y RADIOB, MEJORA GENERAL DE RESPUESTA, INCLUSION DE PARAMETROS PREDEFINIDOS Y MEJORAS SUSTANCIALES EN ALGUNOS METODOS
@@ -291,24 +292,41 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
     // Valida el password, comprueba longitud y si al menos contiene una mayúscula y un número, si es opcional da por válido que sea correcto o este vacío, si es obligatorio solo da por válido que esté correcto
     /**
      * @function validarPassword();
-     * @author Mario Casquero Jañez
+     * @author Javier Nieto y Cristina Núñez
+     * @since 30/11/2020
      * @param $passwd cadena a comprobar.
+     * @param $maximo valor que indica la longitud máxima de la contraseña
      * @param $minimo valor que indica la longitud mínima de la contraseña
+     * @param $tipo valor que el tipo de la contraseña, su complejidad, siendo 1 si admite solo letras, 2 si admite numeros y letras y 3 si contiene al menos una letra mayúscula y un número 
      * @param $obligatorio valor booleano indicado mediante 1, si es obligatorio o 0 si no lo es.
      * @return null|string Devuelve null si es correcto o un mensaje de error en caso de que lo haya.
      */
-    public static function validarPassword($passwd, $minimo = 2, $obligatorio = 0) {  //CAMBIADO ORDEN DE LOS PARAMETROS, AÑADIDOS PARAMETROS PREDEFINIDOS Y MEJORADA LA RESPUESTA
+    public static function validarPassword($passwd, $maximo=16, $minimo = 2, $tipo=3, $obligatorio = 1) {  //CAMBIADO ORDEN DE LOS PARAMETROS, AÑADIDOS PARAMETROS PREDEFINIDOS Y MEJORADA LA RESPUESTA
         $mensajeError = null;
         if ($obligatorio == 1) {
             $mensajeError = self::comprobarNoVacio($passwd); 
         }
         if (strlen($passwd) < $minimo && !empty($passwd)){
-            $mensajeError = " La contraseña debe ser del al menos " . $minimo . " caracteres.";
+            $mensajeError = " La contraseña debe ser de al menos " . $minimo . " caracteres.";
         }
-        if ((!preg_match("`[A-Z]`", $passwd) || !preg_match("`[0-9]`", $passwd)) && !empty($passwd)) {
-            $mensajeError .= " La contraseña debe contener una mayúscula y un número.";
+        if (strlen($passwd) > $maximo && !empty($passwd)){
+            $mensajeError = " La contraseña debe tener como maximo " . $maximo . " caracteres.";
         }
-        
+        if(!empty($passwd) && $mensajeError==null){
+            switch ($tipo){
+                case 1:
+                    $mensajeError = self::comprobarAlfabetico($passwd, $maximo, $minimo, $obligatorio);
+                    break;
+                case 2:
+                    $mensajeError = self::comprobarAlfaNumerico($passwd, $maximo, $minimo, $obligatorio);
+                    break;
+                case 3:
+                    if ((!preg_match("`[A-Z]`", $passwd) || !preg_match("`[0-9]`", $passwd)) && !empty($passwd)) {
+                        $mensajeError .= " La contraseña debe contener una mayúscula y un número.";
+                    }
+                    break;
+            }
+        }
         return $mensajeError;
     }
 

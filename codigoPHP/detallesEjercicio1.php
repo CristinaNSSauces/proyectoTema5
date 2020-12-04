@@ -3,15 +3,16 @@
         *@author: Cristina Núñez
         *@since: 26/11/2020
     */ 
-    if(isset($_REQUEST['salir'])){//Si el usuario pulsa el botón de salir
-        header('Location: ../indexProyectoTema5.php');//Redirigimos al usuario al index del tema 5
-        exit;
-    }
-    
+
     if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {//Si el usuario no se ha autentificado
         header('Location: ejercicio01.php');//Redirigimos al usuario al ejercicio01.php para que se autentifique
         exit;
     }
+    
+    if(isset($_REQUEST['salir'])){//Si el usuario pulsa el botón de salir
+        header('Location: ../indexProyectoTema5.php');//Redirigimos al usuario al index del tema 5
+        exit;
+    }   
 ?>
 <!DOCTYPE html>
 <html>

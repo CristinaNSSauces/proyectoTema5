@@ -4,19 +4,22 @@
         *@since: 26/11/2020
     */
     session_start();//Reanudamos la sesion existente
+    if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {//Si el usuario no se ha autentificado
+        header('Location: ejercicio02.php');//Redirigimos al usuario al ejercicio02.php para que se autentifique
+        exit;
+    }
+    
     if(isset($_REQUEST['detalles'])){//Si pulsa el botón de detalles
         header('Location: detallesEjercicio2.php');//Redirigimos al usuario a la ventana de detalles
         exit;
     }
+    
     if(isset($_REQUEST['salir'])){//Si el usuario pulsa el botón de salir
         session_destroy();//Destruimos toda la información registrada en la sesión
         header('Location: ../indexProyectoTema5.php');//Redirigimos al usuario al index del tema 5
         exit;
     }
-    if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {//Si el usuario no se ha autentificado
-        header('Location: ejercicio02.php');//Redirigimos al usuario al ejercicio02.php para que se autentifique
-        exit;
-    }
+    
 ?>
 <!DOCTYPE html>
 <html>

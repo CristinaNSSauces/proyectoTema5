@@ -3,6 +3,11 @@
         *@author: Cristina Núñez
         *@since: 26/11/2020
     */
+    if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {//Si el usuario no se ha autentificado
+        header('Location: ejercicio01.php');//Redirigimos al usuario al ejercicio01.php para que se autentifique
+        exit;
+    }
+        
     if(isset($_REQUEST['detalles'])){//Si pulsa el botón de detalles
         header('Location: detallesEjercicio1.php');//Redirigimos al usuario a la ventana de detalles
         exit;
@@ -13,10 +18,7 @@
         exit;
     }
     
-    if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {//Si el usuario no se ha autentificado
-        header('Location: ejercicio01.php');//Redirigimos al usuario al ejercicio01.php para que se autentifique
-        exit;
-    }
+    
     
     require_once '../core/libreriaValidacion.php';//Importamos la librería de validación para validar los campos del formulario necesarios
     $errorIdioma = null;//Creamos e inicializamos $errorIdioma a null, en ella almacenaremos (si hay) los errores al validar el campo idioma del formulario
